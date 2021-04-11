@@ -55,6 +55,9 @@ const models = {
         callback(null, data)
       }
     })
+  },
+  add: (name, type, imgUrl, callback) => {
+
   }
 }
 
