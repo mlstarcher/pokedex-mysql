@@ -30,20 +30,6 @@ app.get('/types', (req, res) => {
   })
 })
 
-app.post('/pokemon', (req, res) => {
-  console.log(req.body)
-  const name = req.body.name;
-  const type = req.body.type;
-  const imgUrl = req.body.imgUrl
-  db.add(name, type, imgUrl, (err, data) => {
-    if (err) {
-      res.status(400).send(err)
-    } else {
-      res.status(200).send(data)
-    }
-  })
-})
-
 app.put('/pokemon/:id', (req, res) => {
   db.updateName(req.params.id, req.body.name, (err, data) => {
     if (err) {

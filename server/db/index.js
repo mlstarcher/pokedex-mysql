@@ -15,7 +15,7 @@ connection.connect(function(err) {
 
 const models = {
   getAll: (callback) => {
-    mysqlStr = 'SELECT * FROM pokemon inner join types on pokemon.typeNum = types.id inner join images on pokemon.imageNum = images.id';
+    let mysqlStr = 'SELECT * FROM pokemon inner join types on pokemon.typeNum = types.id inner join images on pokemon.imageNum = images.id';
     connection.query(mysqlStr, (err, data) => {
       if (err) {
         callback(err)
@@ -25,7 +25,7 @@ const models = {
     })
   },
   getTypes: (callback) => {
-    mysqlStr = 'SELECT * FROM types';
+    let mysqlStr = 'SELECT * FROM types';
     connection.query(mysqlStr, (err, data) => {
       if (err) {
         callback(err)
@@ -35,7 +35,7 @@ const models = {
     })
   },
   updateName: (id, name, callback) => {
-    mysqlStr = `UPDATE pokemon SET name = "${name}" WHERE pokemon.id = ${id}`;
+    let mysqlStr = `UPDATE pokemon SET name = "${name}" WHERE pokemon.id = ${id}`;
     connection.query(mysqlStr, (err, data) => {
       if (err) {
         console.log('query error: ', err)
@@ -47,7 +47,7 @@ const models = {
   },
   delete: (id, callback) => {
     console.log('id at query time is: ', id)
-    mysqlStr = `DELETE pokemon, images FROM pokemon INNER JOIN images ON pokemon.imageNum = images.id WHERE pokemon.id = ${id}`;
+    let mysqlStr = `DELETE pokemon, images FROM pokemon INNER JOIN images ON pokemon.imageNum = images.id WHERE pokemon.id = ${id}`;
     connection.query(mysqlStr, (err, data) => {
       if (err) {
         callback(err)
@@ -56,9 +56,6 @@ const models = {
       }
     })
   },
-  add: (name, type, imgUrl, callback) => {
-
-  }
 }
 
 module.exports = models;

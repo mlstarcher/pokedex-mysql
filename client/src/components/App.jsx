@@ -3,7 +3,6 @@ import Axios from 'axios';
 
 import PokemonList from './PokemonList.jsx';
 import TypeOption from './TypeOption.jsx';
-import AddPokemon from './AddPokemon.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -58,7 +57,6 @@ class App extends React.Component {
     return (
       <div>
         <h1>Fullstack Pokedex!</h1>
-        <AddPokemon getAll={this.getAll}/>
         <button onClick={(e) => this.handleSelectAll(e)}>Show All</button>
         <select id="types" onChange={(e) => this.handleSelect(e)}>
           {this.state.types.map((currentType, index) => {
